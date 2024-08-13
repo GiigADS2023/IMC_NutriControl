@@ -1,10 +1,11 @@
+/* Base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Lato", sans-serif;
 }
-  
+
 body {
     background-color: #090e22;
     display: flex;
@@ -13,6 +14,7 @@ body {
     min-height: 100vh;
     color: #fff;
     position: relative;
+    flex-direction: column;
 }
 
 .overlay-container {
@@ -26,12 +28,12 @@ body {
 
 .title {
     position: absolute;
-    top: 20px; 
+    top: 10px; 
     left: 50%;
     transform: translateX(-50%);
     font-size: 1rem; 
     text-align: center;
-    z-index: 10; 
+    z-index: 10;
 }
 
 .calc-row {
@@ -57,7 +59,7 @@ body {
     padding: 2rem;
     z-index: 1; 
     position: relative;
-    margin-top: 100px; 
+    margin-top: 150px;  
 }
 
 /* IMC Form */
@@ -220,4 +222,64 @@ button:hover {
   
 .high {
     color: #db1912;
+}
+
+/* Responsivo */
+@media screen and (max-width: 1024px) {
+    .title {
+        top: 5px; 
+    }
+
+    .calc-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #img {
+        display: none;
+    }
+
+    .container {
+        width: 90%;
+        margin-top: 150px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .title {
+        top: 2px; 
+        font-size: 0.9rem;
+    }
+
+    .container {
+        width: 95%;
+        padding: 1.5rem;
+        margin-top: 150px;
+    }
+
+    #calc-container h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-control input, .input-field span, .input-field i {
+        font-size: 1.1rem;
+    }
+
+    button {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+    }
+
+    #imc-number {
+        font-size: 2rem;
+    }
+
+    #imc-info {
+        font-size: 1.2rem;
+    }
+
+    #imc-table {
+        font-size: 0.7rem;
+    }
 }
