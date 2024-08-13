@@ -12,6 +12,32 @@ body {
     align-items: center;
     min-height: 100vh;
     color: #fff;
+    position: relative;
+}
+
+.overlay-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title {
+    position: absolute;
+    top: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem; 
+    text-align: center;
+    z-index: 10; 
+}
+
+.calc-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
   
 .hide {
@@ -21,6 +47,7 @@ body {
 #img img {
     width: 35rem;
     padding: 1rem;
+    margin-top: 85px;
 }
 
 .container {
@@ -28,8 +55,11 @@ body {
     min-height: 400px;
     background-color: #1d1e33;
     padding: 2rem;
+    z-index: 1; 
+    position: relative;
+    margin-top: 100px; 
 }
-  
+
 /* IMC Form */
 #calc-container h2 {
     text-align: center;
