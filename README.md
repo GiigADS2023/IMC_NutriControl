@@ -1,7 +1,6 @@
 Controle de pacientes para clínica de nutrição             
 
 Giorgia Batista Schmidt - giorgia.schmidt@alunos.sc.senac.br
-Graduanda em Análise Desenvolvimento de Sistema; Faculdade Senac Blumenau
 
 Regra de Negócios para a Calculadora de IMC
 - Entrada de Informações:
