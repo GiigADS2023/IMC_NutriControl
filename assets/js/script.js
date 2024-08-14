@@ -44,6 +44,14 @@ const heightInput = document.querySelector("#height");
 const weightInput = document.querySelector("#weight");
 const calcBtn = document.querySelector("#calc-btn");
 const clearBtn = document.querySelector("#clear-btn");
+
+const calcContainer = document.querySelector("#calc-container");
+const resultContainer = document.querySelector("#result-container");
+
+const imcNumber = document.querySelector("#imc-number span");
+const imcInfo = document.querySelector("#imc-info span");
+
+const backBtn = document.querySelector("#back-btn");
  
 // Funções
 function createTable(data) {
@@ -79,6 +87,17 @@ function validaDigits(text) {
     return text.replace(/[^0-9,.]/g, "");
 }
 
+// Calculo IMC
+function calcIMC(weight, height) {
+    const IMC = (weight / (height * height)).toFixed(1);
+    return IMC;
+}
+
+function showOrHideResults() {
+    calcContainer.classList.toggle("hide")
+    resultContainer.classList.toggle("hide")
+}
+
 // Inicialização
 createTable(data);
 
@@ -90,10 +109,38 @@ createTable(data);
     });
 });
 
+calcBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const weight = +weightInput.value.replace(",", ".");
+    const height = +heightInput.value.replace(",", ".");
+
+    if (!weight || !height) return;
+
+    const IMC = calcIMC(weight, height);
+
+    let info
+
+    data.forEach((item) => {
+        if (IMC >= item.min && IMC <= item.max) {
+            info = item.info;
+        }
+    });
+
+    if (!info) return;
+
+    imcNumber.innerText = IMC;
+    imcInfo.innerText = info;
+
+    showOrHideResults();
+});
+
 // Limpa campos e evita o envio do formulário
 clearBtn.addEventListener("click", (e) => {
     e.preventDefault(); // Evita o envio do formulário
-    cleanInputs(); // Limpa os campos
-});
 
+    cleanInputs(); // Limpa os campos
+
+    showOrHideResults(); // Retorna para a tela inicial
+});
 
