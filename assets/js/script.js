@@ -80,6 +80,8 @@ function createTable(data) {
 function cleanInputs() {
     heightInput.value = "";
     weightInput.value = "";
+    imcNumber.className = "";
+    imcInfo.className = "";
 }
 
 // Valida apenas números e vírgula ou ponto
@@ -131,6 +133,29 @@ calcBtn.addEventListener("click", (e) => {
 
     imcNumber.innerText = IMC;
     imcInfo.innerText = info;
+    
+    switch (info) {
+        case "Abaixo do normal":
+          imcNumber.classList.add("low");
+          imcInfo.classList.add("low");
+          break;
+        case "Normal":
+          imcNumber.classList.add("good");
+          imcInfo.classList.add("good");
+          break;
+        case "Sobrepeso":
+          imcNumber.classList.add("low");
+          imcInfo.classList.add("low");
+          break;
+        case "Obesidade":
+          imcNumber.classList.add("medium");
+          imcInfo.classList.add("medium");
+          break;
+        case "Obesidade grave":
+          imcNumber.classList.add("high");
+          imcInfo.classList.add("high");
+          break;
+    }
 
     showOrHideResults();
 });
@@ -140,7 +165,10 @@ clearBtn.addEventListener("click", (e) => {
     e.preventDefault(); // Evita o envio do formulário
 
     cleanInputs(); // Limpa os campos
+});
 
-    showOrHideResults(); // Retorna para a tela inicial
+backBtn.addEventListener("click", (e) => {
+    cleanInputs();
+    showOrHideResults();
 });
 
