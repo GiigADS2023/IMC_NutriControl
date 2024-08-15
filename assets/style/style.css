@@ -152,6 +152,10 @@ button:hover {
     background-color: #444;
 }
 
+#back-btn {
+    background-color: #444;
+}
+
 /* Table */
 #result-container {
     text-align: center;
@@ -224,6 +228,86 @@ button:hover {
     color: #db1912;
 }
 
+.list-clientes {
+    width: 90%;
+    height: 80%;
+    border-radius: 10px;
+    background:  #1d1e33;
+    margin-top: 60px;
+}
+
+.header {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto 12px;
+}
+
+.header span {
+    font-weight: 900;
+    font-size: 20px;
+    word-break: break-all;
+}
+
+.divTable {
+    padding: 10px;
+    width: auto;
+    height: inherit;
+    overflow: auto;
+}
+
+.divTable::-webkit-scrollbar {
+    width: 12px;
+    background-color: whitesmoke; 
+}
+  
+.divTable::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: darkgray; 
+}
+
+table {
+    width: 100%;
+    border-spacing: 10px;
+    word-break: break-all;
+    border-collapse: collapse;
+}
+
+
+thead {
+    background-color: #525260;
+}
+  
+tr {
+    border-bottom: 1px solid rgb(94, 94, 94)!important;
+}
+
+tbody tr td {
+    vertical-align: text-top;
+    padding: 6px;
+    max-width: 50px;
+}
+
+thead tr th {
+    padding: 5px;
+    text-align: start;
+    margin-bottom: 50px;
+}
+  
+tbody tr {
+    margin-bottom: 50px;
+}
+
+thead tr th.acao {
+    width: 100px!important;
+    text-align: center;
+}
+  
+  tbody tr td.acao {
+    text-align: center;
+}
+
 /* Responsivo */
 @media screen and (max-width: 1024px) {
     .title {
@@ -282,4 +366,51 @@ button:hover {
     #imc-table {
         font-size: 0.7rem;
     }
+}
+
+@media (max-width: 700px) {
+    body {
+      font-size: 10px;
+    }
+    
+    .header span {
+      font-size: 15px;
+    }
+  
+    thead tr th.acao {
+      width: auto!important;
+    }
+    
+    td button i {
+      font-size: 20px!important;
+    }
+  
+    td button i:first-child {
+      margin-right: 0;
+    }
+}
+  
+@keyframes modal {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -60px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+}
+  
+td button {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+  
+td button i {
+    font-size: 25px;
+}
+  
+td button i:first-child {
+    margin-right: 10px;
 }

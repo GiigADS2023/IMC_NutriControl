@@ -7,6 +7,7 @@
     <title>IMC NutriControl</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <!--Defer - Carrega depois do html/css carregar-->
     <script src="assets/js/script.js" defer></script>
 </head>
@@ -26,6 +27,13 @@
                     <h2>Calculadora - IMC</h2>
                     <form id="imc-form">
                         <div class="form-inputs">
+                            <div class="form-control">
+                                <label for="name">Nome</label>
+                                <div class="input-field">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                            </div>
                             <div class="form-control">
                                 <label for="height">Altura em m</label>
                                 <div class="input-field">
@@ -61,8 +69,34 @@
                             <h4>Obesidade</h4>
                         </div>
                     </div>
-                    <button id="back-btn">Voltar</button>
+                    <div class="action-control">
+                        <button id="aply-btn">Aplicar</button>
+                        <button id="back-btn">Voltar</button>
+                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="list-clientes">
+            <div class="header">
+                <span>Clientes</span>
+            </div>
+
+            <div class="divTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Altura</th>
+                            <th>Peso</th>
+                            <th>IMC</th>
+                            <th>Situação</th>
+                            <th class="acao">Editar</th>
+                            <th class="acao">Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

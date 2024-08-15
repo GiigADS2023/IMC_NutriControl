@@ -172,3 +172,107 @@ backBtn.addEventListener("click", (e) => {
     showOrHideResults();
 });
 
+/* Tabela - Controle*/
+const tbody = document.querySelector('tbody');
+const Nome = document.querySelector('#name');
+const Altura = document.querySelector('#height');
+const Peso = document.querySelector('#weight');
+const btnSalvar = document.querySelector('#aply-btn');
+
+let itens = JSON.parse(localStorage.getItem('itens')) || []; 
+let id; 
+
+function setItensBD() {
+  localStorage.setItem('itens', JSON.stringify(itens)); 
+}
+
+function loadItens() {
+  tbody.innerHTML = ''; 
+  itens.forEach((item, index) => {
+    insertItem(item, index);
+  });
+}
+
+window.onload = loadItens;
+
+function editItem(index) {
+  const item = itens[index];
+  
+  Nome.value = item.nome;
+  Altura.value = item.altura;
+  Peso.value = item.peso;
+  
+  id = index;
+}
+
+function deleteItem(index) {
+  const confirmed = confirm("Tem certeza que deseja excluir este item?");
+  
+  if (confirmed) {
+    itens.splice(index, 1);  // Remove o item se confirmado
+    setItensBD();            // Atualiza localStorage
+    loadItens();             // Recarrega a table
+  }
+}
+
+
+function insertItem(item, index) {
+  let tr = document.createElement('tr');
+
+  tr.innerHTML = `
+    <td>${item.nome}</td>
+    <td>${item.altura}</td>
+    <td>${item.peso}</td>
+    <td>${item.imc}</td>
+    <td>${item.situacao}</td>
+    <td class="acao">
+      <button onclick="editItem(${index})"><i class='bx bx-edit'></i></button>
+    </td>
+    <td class="acao">
+      <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i></button>
+    </td>
+  `;
+  tbody.appendChild(tr);
+}
+
+btnSalvar.onclick = e => {
+  if (Nome.value === '' || Altura.value === '' || Peso.value === '') {
+    return;
+  }
+
+  e.preventDefault();
+
+  const altura = parseFloat(Altura.value.replace(",", "."));
+  const peso = parseFloat(Peso.value.replace(",", "."));
+  const IMC = calcIMC(peso, altura);
+
+  let situacao = '';
+
+  data.forEach((item) => {
+    if (IMC >= item.min && IMC <= item.max) {
+      situacao = item.info;
+    }
+  });
+
+  const clienteData = {
+    nome: Nome.value,
+    altura: Altura.value,
+    peso: Peso.value,
+    imc: IMC,
+    situacao: situacao
+  };
+
+  if (id !== undefined) {
+    itens[id] = clienteData; 
+  } else {
+    itens.push(clienteData); 
+  }
+
+  setItensBD();
+  loadItens();
+  id = undefined; 
+  Nome.value = "";
+  Altura.value = "";
+  Peso.value = "";
+};
+
