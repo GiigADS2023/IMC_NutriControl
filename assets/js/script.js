@@ -40,6 +40,7 @@ const data = [
 // Seleção de elementos
 const imcTable = document.querySelector("#imc-table");
  
+const nameInput = document.querySelector('#name');
 const heightInput = document.querySelector("#height");
 const weightInput = document.querySelector("#weight");
 const calcBtn = document.querySelector("#calc-btn");
@@ -78,10 +79,11 @@ function createTable(data) {
  
 // Função que limpa as informações
 function cleanInputs() {
-    heightInput.value = "";
-    weightInput.value = "";
-    imcNumber.className = "";
-    imcInfo.className = "";
+  heightInput.value = "";
+  weightInput.value = "";
+  nameInput.value = "";
+  imcNumber.className = "";
+  imcInfo.className = "";
 }
 
 // Valida apenas números e vírgula ou ponto
