@@ -308,6 +308,37 @@ thead tr th.acao {
     text-align: center;
 }
 
+#pesquisar {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+#search {
+    height: 2.5rem;
+    width: 370px;
+    padding: 8px 12px;
+    border-radius: 5px005px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-shadow: 02px5pxrgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+#search-btn {
+    height: 2.5rem;
+    padding: 015px;
+    border: none;
+    border-radius: 05px5px0;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 02px5pxrgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
 /* Responsivo */
 @media screen and (max-width: 1024px) {
     .title {
