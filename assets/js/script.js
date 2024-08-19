@@ -51,6 +51,7 @@ const resultContainer = document.querySelector("#result-container");
 
 const imcNumber = document.querySelector("#imc-number span");
 const imcInfo = document.querySelector("#imc-info span");
+const situacaoInfo = document.querySelector("#situacao-info")
 
 const backBtn = document.querySelector("#back-btn");
  
@@ -277,4 +278,30 @@ btnSalvar.onclick = e => {
   Altura.value = "";
   Peso.value = "";
 };
+
+// Buscar por nome do user
+function buscarUsuario() {
+  // Pega o valor na barra de pesquisa
+  const input = document.getElementById('search').value.toUpperCase();
+
+  // Pega todas as linhas da tabela
+  const tr = tbody.getElementsByTagName('tr');
+
+  // Loop através de todas as linhas da tabela
+  for (let i = 0; i < tr.length; i++) {
+    const td = tr[i].getElementsByTagName('td')[0]; // // Seleciona a primeira célula (nome)
+    if (td) {
+      const textValue = td.textContent || td.innerText;
+      // Verifica se o nome contém o valor pesquisado
+      if (textValue.toUpperCase().indexOf(input) > -1) {
+        tr[i].style.display = ""; // Mostra a linha
+      } else {
+        tr[i].style.display = "none"; // Oculta a linha
+      }
+    }    
+  }
+}
+
+// Adiciona o evento de pesquisa ao input
+document.getElementById('search').addEventListener('keyup', buscarUsuario);
 
