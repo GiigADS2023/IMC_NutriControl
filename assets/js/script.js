@@ -222,12 +222,29 @@ function deleteItem(index) {
 function insertItem(item, index) {
   let tr = document.createElement('tr');
 
+  let situacaoClass = '';
+  switch (item.situacao) {
+    case "Magreza":
+      situacaoClass = "low";
+      break;
+    case "Normal":
+      situacaoClass = "good";
+      break;
+    case "Sobrepeso":
+      situacaoClass = "medium";
+      break;
+    case "Obesidade":
+    case "Obesidade grave":
+      situacaoClass = "high";
+      break;
+  }
+
   tr.innerHTML = `
     <td>${item.nome}</td>
     <td>${item.altura}</td>
     <td>${item.peso}</td>
     <td>${item.imc}</td>
-    <td>${item.situacao}</td>
+    <td class="${situacaoClass}">${item.situacao}</td>
     <td class="acao">
       <button onclick="editItem(${index})"><i class='bx bx-edit'></i></button>
     </td>
@@ -235,6 +252,7 @@ function insertItem(item, index) {
       <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i></button>
     </td>
   `;
+
   tbody.appendChild(tr);
 }
 
