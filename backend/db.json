@@ -1,85 +1,84 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "name": "Ana Silva",
-        "weight": 68,
-        "height": 1.65,
-        "imc": 24.98,
-        "situacao": "Peso Normal"
-      },
-      {
-        "id": 2,
-        "name": "Carlos Pereira",
-        "weight": 85,
-        "height": 1.75,
-        "imc": 27.76,
-        "situacao": "Sobrepeso"
-      },
-      {
-        "id": 3,
-        "name": "Mariana Souza",
-        "weight": 54,
-        "height": 1.60,
-        "imc": 21.09,
-        "situacao": "Peso Normal"
-      },
-      {
-        "id": 4,
-        "name": "José Oliveira",
-        "weight": 95,
-        "height": 1.80,
-        "imc": 29.32,
-        "situacao": "Sobrepeso"
-      },
-      {
-        "id": 5,
-        "name": "Fernanda Costa",
-        "weight": 72,
-        "height": 1.70,
-        "imc": 24.91,
-        "situacao": "Peso Normal"
-      },
-      {
-        "id": 6,
-        "name": "Ricardo Lima",
-        "weight": 102,
-        "height": 1.85,
-        "imc": 29.83,
-        "situacao": "Sobrepeso"
-      },
-      {
-        "id": 7,
-        "name": "Paula Araújo",
-        "weight": 48,
-        "height": 1.55,
-        "imc": 19.97,
-        "situacao": "Peso Normal"
-      },
-      {
-        "id": 8,
-        "name": "André Mendes",
-        "weight": 78,
-        "height": 1.80,
-        "imc": 24.07,
-        "situacao": "Peso Normal"
-      },
-      {
-        "id": 9,
-        "name": "Camila Ramos",
-        "weight": 60,
-        "height": 1.65,
-        "imc": 22.04,
-        "situacao": "Peso Normal"
-      },
-      {
-        "id": 10,
-        "name": "Rafael Alves",
-        "weight": 88,
-        "height": 1.78,
-        "imc": 27.77,
-        "situacao": "Sobrepeso"
-      }
-    ]
-  }
-  
+  "users": [
+    {
+      "id": 1,
+      "name": "Ana Silva",
+      "weight": 68,
+      "height": 1.65,
+      "imc": 24.98,
+      "situacao": "Normal"
+    },
+    {
+      "id": 2,
+      "name": "Carlos Pereira",
+      "weight": 85,
+      "height": 1.75,
+      "imc": 27.76,
+      "situacao": "Sobrepeso"
+    },
+    {
+      "id": 3,
+      "name": "Mariana Souza",
+      "weight": 54,
+      "height": 1.60,
+      "imc": 21.09,
+      "situacao": "Normal"
+    },
+    {
+      "id": 4,
+      "name": "José Oliveira",
+      "weight": 95,
+      "height": 1.80,
+      "imc": 29.32,
+      "situacao": "Sobrepeso"
+    },
+    {
+      "id": 5,
+      "name": "Fernanda Costa",
+      "weight": 72,
+      "height": 1.70,
+      "imc": 24.91,
+      "situacao": "Normal"
+    },
+    {
+      "id": 6,
+      "name": "Ricardo Lima",
+      "weight": 102,
+      "height": 1.85,
+      "imc": 29.83,
+      "situacao": "Sobrepeso"
+    },
+    {
+      "id": 7,
+      "name": "Paula Araújo",
+      "weight": 48,
+      "height": 1.55,
+      "imc": 19.97,
+      "situacao": "Normal"
+    },
+    {
+      "id": 8,
+      "name": "André Mendes",
+      "weight": 78,
+      "height": 1.80,
+      "imc": 24.07,
+      "situacao": "Normal"
+    },
+    {
+      "id": 9,
+      "name": "Camila Ramos",
+      "weight": 60,
+      "height": 1.65,
+      "imc": 22.04,
+      "situacao": "Normal"
+    },
+    {
+      "id": 10,
+      "name": "Rafael Alves",
+      "weight": 88,
+      "height": 1.78,
+      "imc": 27.77,
+      "situacao": "Sobrepeso"
+    }
+  ]
+}

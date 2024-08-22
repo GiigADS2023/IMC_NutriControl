@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": "c671",
+      "name": "Giorgia Batista Schmidt",
+      "height": 1.74,
+      "weight": 54.5,
+      "imc": "18.0",
+      "situacao": "Magreza"
+    },
+    {
+      "id": "ac4f",
+      "name": "Gustavo Henrique Howe",
+      "height": 1.85,
+      "weight": 70,
+      "imc": "20.5",
+      "situacao": "Normal"
+    }
+  ]
+}
