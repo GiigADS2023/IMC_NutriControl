@@ -323,3 +323,56 @@ function buscarUsuario() {
 // Adiciona o evento de pesquisa ao input
 document.getElementById('search').addEventListener('keyup', buscarUsuario);
 
+// Busca usuários da API e dispara eles na tabela
+async function fetchAndDisplayUsers() {
+  try {
+      const response = await fetch('http://localhost:3000/users');
+      const users = await response.json();
+
+      const tbody = document.querySelector('tbody');
+      tbody.innerHTML = ''; // Limpa linhas existentes
+
+      users.forEach(user => {
+          const tr = document.createElement('tr');
+
+          let situacaoClass = '';
+          switch (user.situacao) {
+              case "Magreza":
+                  situacaoClass = "low";
+                  break;
+              case "Peso Normal":
+                  situacaoClass = "good";
+                  break;
+              case "Sobrepeso":
+                  situacaoClass = "medium";
+                  break;
+              case "Obesidade":
+              case "Obesidade grave":
+                  situacaoClass = "high";
+                  break;
+          }
+
+          tr.innerHTML = `
+              <td>${user.name}</td>
+              <td>${user.height}</td>
+              <td>${user.weight}</td>
+              <td>${user.imc}</td>
+              <td class="${situacaoClass}">${user.situacao}</td>
+              <td class="acao">
+                  <button onclick="editItem(${user.id})"><i class='bx bx-edit'></i></button>
+              </td>
+              <td class="acao">
+                  <button onclick="deleteItem(${user.id})"><i class='bx bx-trash'></i></button>
+              </td>
+          `;
+          tbody.appendChild(tr);
+      });
+  } catch (error) {
+      console.error('Erro ao buscar os usuários:', error);
+  }
+}
+
+// Inicializa a tabela quando a página recarregada
+window.onload = fetchAndDisplayUsers;
+
+
