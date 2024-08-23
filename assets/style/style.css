@@ -231,17 +231,18 @@ button:hover {
 .list-clientes {
     width: 90%;
     height: 80%;
-    border-radius: 10px;
+    border: none;
     background:  #1d1e33;
-    margin-top: 60px;
+    margin-top: 50px;
+    padding: 25px;
 }
 
 .header {
-    min-height: 70px;
+    min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: auto 12px;
+    margin: auto 6px;
 }
 
 .header span {
@@ -316,26 +317,25 @@ thead tr th.acao {
 
 #search {
     height: 2.5rem;
-    width: 370px;
+    width: 380px;
     padding: 8px 12px;
-    border-radius: 5px005px;
+    border: none;
     border: 1px solid #ccc;
     font-size: 1rem;
-    box-shadow: 02px5pxrgba(0, 0, 0, 0.1);
+    box-shadow: 2px 5px rgba(0, 0, 0, 0.1);
     outline: none;
 }
 
 #search-btn {
     height: 2.5rem;
-    padding: 015px;
+    padding: 15px;
     border: none;
-    border-radius: 05px5px0;
     cursor: pointer;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 02px5pxrgba(0, 0, 0, 0.1);
+    box-shadow: 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
