@@ -1,8 +1,8 @@
 const api = {
     async buscarUsuarios() {
         try {
-            const response = await fetch('http://localhost:3000/users');
-            return await response.json();
+            const response = await axios.get('http://localhost:3000/users');
+            return response.data;  // Axios já retorna os dados no formato JSON
         } catch (error) {
             alert('Erro ao buscar usuários');
             throw error;
@@ -11,19 +11,8 @@ const api = {
 
     async criarUsuario(usuario) {
         try {
-            const response = await fetch('http://localhost:3000/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(usuario),
-            });
-
-            if (!response.ok) {
-                throw new Error('Erro ao criar usuário');
-            }
-            
-            return await response.json();
+            const response = await axios.post('http://localhost:3000/users', usuario); // Passa o objeto direto
+            return response.data;
         } catch (error) {
             alert('Erro ao criar usuário');
             throw error;
@@ -32,19 +21,8 @@ const api = {
 
     async atualizarUsuario(id, usuario) {
         try {
-            const response = await fetch(`http://localhost:3000/users/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(usuario),
-            });
-
-            if (!response.ok) {
-                throw new Error('Erro ao atualizar usuário');
-            }
-            
-            return await response.json();
+            const response = await axios.put(`http://localhost:3000/users/${id}`, usuario); // Passa o objeto direto
+            return response.data;
         } catch (error) {
             alert('Erro ao atualizar usuário');
             throw error;
@@ -53,13 +31,7 @@ const api = {
 
     async deletarUsuario(id) {
         try {
-            const response = await fetch(`http://localhost:3000/users/${id}`, {
-                method: 'DELETE',
-            });
-
-            if (!response.ok) {
-                throw new Error('Erro ao deletar usuário');
-            }
+            await axios.delete(`http://localhost:3000/users/${id}`);
         } catch (error) {
             alert('Erro ao deletar usuário');
             throw error;
