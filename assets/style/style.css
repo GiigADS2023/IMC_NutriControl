@@ -445,3 +445,30 @@ td button i {
 td button i:first-child {
     margin-right: 10px;
 }
+
+@media screen and (max-width: 768px) {
+    #search {
+        width: 70%; 
+    }
+  
+    #search-btn {
+        width: 25%; 
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #pesquisar {
+        flex-direction: column; 
+    }
+
+    #search {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #search-btn {
+        width: 100%;
+    }
+}
