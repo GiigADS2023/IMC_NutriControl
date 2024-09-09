@@ -30,7 +30,7 @@ const data = [
   },
   {
     min: 40,
-    max: 99,
+    max: Infinity,
     classification: "Maior que 40,0",
     info: "Obesidade grave",
     obesity: "III",
@@ -48,7 +48,6 @@ const calcContainer = document.querySelector("#calc-container");
 const resultContainer = document.querySelector("#result-container");
 const imcNumber = document.querySelector("#imc-number span");
 const imcInfo = document.querySelector("#imc-info span");
-const situacaoInfo = document.querySelector("#situacao-info");
 const backBtn = document.querySelector("#back-btn");
 
 // Funções
@@ -91,9 +90,23 @@ function calcIMC(weight, height) {
   return IMC;
 }
 
-function showOrHideResults() {
-  calcContainer.classList.toggle("hide");
-  resultContainer.classList.toggle("hide");
+function showResults() {
+  calcContainer.classList.add("hide");
+  resultContainer.classList.remove("hide");
+}
+
+function hideResults() {
+  calcContainer.classList.remove("hide");
+  resultContainer.classList.add("hide");
+}
+
+// Validação para altura e peso
+function validaAltura(altura) {
+  return altura >= 0.5 && altura <= 3.0;
+}
+
+function validaPeso(peso) {
+  return peso >= 3 && peso <= 600;
 }
 
 // Inicialização
@@ -107,11 +120,32 @@ createTable(data);
   });
 });
 
+function validaNome(nome) {
+  return nome.length >= 3;
+}
+
 calcBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
+  const nome = nameInput.value;
+  if (!validaNome(nome)) {
+    alert("O nome deve ter no mínimo 3 caracteres.");
+    return;
+  }
+
   const weight = +weightInput.value.replace(",", ".");
   const height = +heightInput.value.replace(",", ".");
+
+  // Verificação de valores válidos para altura e peso
+  if (!validaAltura(height)) {
+    alert("Por favor, insira uma altura válida entre 0.5m e 3m.");
+    return;
+  }
+
+  if (!validaPeso(weight)) {
+    alert("Por favor, insira um peso válido entre 3kg e 600kg.");
+    return;
+  }
 
   if (!weight || !height) return;
 
@@ -153,17 +187,17 @@ calcBtn.addEventListener("click", (e) => {
       break;
   }
 
-  showOrHideResults();
+  showResults();
 });
 
 clearBtn.addEventListener("click", (e) => {
-  e.preventDefault(); // Evita o envio do formulário
-  cleanInputs(); // Limpa os campos
+  e.preventDefault();
+  cleanInputs();
 });
 
-backBtn.addEventListener("click", (e) => {
+backBtn.addEventListener("click", () => {
+  hideResults();
   cleanInputs();
-  showOrHideResults();
 });
 
 /* Tabela - CRUD */
@@ -333,21 +367,41 @@ searchInput.addEventListener('input', () => {
   const searchValue = searchInput.value.toLowerCase();
 
   Array.from(tbody.querySelectorAll('tr')).forEach(row => {
-    const name = row.querySelector('td').innerText.toLowerCase();
-    row.style.display = name.includes(searchValue) ? '' : 'none';
+    const name = row.querySelector('td:nth-child(1)').innerText.toLowerCase();
+    const height = row.querySelector('td:nth-child(2)').innerText.toLowerCase();
+    const weight = row.querySelector('td:nth-child(3)').innerText.toLowerCase();
+    const imc = row.querySelector('td:nth-child(4)').innerText.toLowerCase();
+    const situacao = row.querySelector('td:nth-child(5)').innerText.toLowerCase();
+
+    // Verifica se a pesquisa corresponde ao nome, altura, peso, IMC ou situação
+    const matches = name.includes(searchValue) || 
+                    height.includes(searchValue) || 
+                    weight.includes(searchValue) || 
+                    imc.includes(searchValue) || 
+                    situacao.includes(searchValue);
+
+    row.style.display = matches ? '' : 'none';
   });
 });
 
+
 // Configurar o botão de salvar para chamar a função apropriada
 btnSalvar.addEventListener('click', (e) => {
-  e.preventDefault(); // Evita o envio do formulário
-  
+  e.preventDefault();
+
+  const nome = Nome.value;
+  if (!validaNome(nome)) {
+    alert("O nome deve ter no mínimo 3 caracteres.");
+    return;
+  }
+
   if (editId) {
     updateUser(); // Atualiza o usuário se estiver em modo de edição
   } else {
     createUser(); // Cria um novo usuário
   }
 });
+
 
 // Carregar usuários ao inicializar
 loadUsers();
