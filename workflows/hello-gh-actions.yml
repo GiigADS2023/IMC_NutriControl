@@ -1,0 +1,14 @@
+name: ci
+
+on:
+  pull_request: 
+
+jobs:
+  rurn-on: ubuntu-latest
+
+  env: 
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  steps: 
+    - name: Olá Mundo!
+      run: echo 'Olá Mundo'
